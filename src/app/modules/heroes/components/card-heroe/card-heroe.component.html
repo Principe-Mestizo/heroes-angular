@@ -1,0 +1,25 @@
+<nz-card
+  nzHoverable
+  style="width: 240px"
+  [nzCover]="coverTemplate"
+  [nzActions]="[actionSetting, actionEdit]"
+>
+  <nz-card-meta
+    nzTitle="{{ hero.superhero }}"
+    nzDescription="{{ hero.superhero }}"
+  ></nz-card-meta>
+</nz-card>
+<ng-template #coverTemplate>
+  <img alt="example" [src]="hero | heroImage" />
+</ng-template>
+
+<ng-template #actionSetting>
+  <a [routerLink]="['/admin/heroes', hero.id]"
+    ><span nz-icon nzType="setting"></span
+  ></a>
+</ng-template>
+<ng-template #actionEdit>
+  <a [routerLink]="['/admin/heroes/edit', hero.id]"
+    ><span nz-icon nzType="edit"></span
+  ></a>
+</ng-template>

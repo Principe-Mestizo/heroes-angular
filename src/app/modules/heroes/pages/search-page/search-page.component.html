@@ -1,0 +1,37 @@
+<div class="example-input">
+  <h2>Busca Heroe</h2>
+  <input
+    placeholder="Busca tu heroes"
+    nz-input
+    [formControl]="searchInput"
+    (input)="searchHero()"
+    [nzAutocomplete]="auto"
+  />
+
+  <nz-autocomplete #auto>
+    @for (hero of heroes; track hero.id) {
+      <nz-auto-option
+        (click)="onSelectHero(hero)"
+        (keydown.enter)="onSelectHero(hero)"
+        [nzValue]="hero.superhero"
+        [nzLabel]="hero.superhero"
+        role="option"
+        tabindex="0"
+      >
+        {{ hero.superhero }}
+      </nz-auto-option>
+    }
+    @if (
+      heroes.length === 0 && searchInput.value && searchInput.value.length > 0
+    ) {
+      <nz-auto-option nzDisabled>
+        No se encontró nada con el término
+      </nz-auto-option>
+    }
+  </nz-autocomplete>
+</div>
+
+<pre>
+    {{ selectedHero | json }}
+  </pre
+>

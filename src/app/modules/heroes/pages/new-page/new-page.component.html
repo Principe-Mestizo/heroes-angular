@@ -1,0 +1,91 @@
+<div class="contenedor-hero">
+  <form
+    class="hero__form"
+    nz-form
+    [formGroup]="heroForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <h2>{{ currentHero.id ? "Editar" : "Agregar" }} Heroe</h2>
+
+    <nz-form-item>
+      <nz-form-label nzRequired>Superhero</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="superhero" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label>Publisher</nz-form-label>
+      <nz-form-control>
+        <nz-select
+          formControlName="publisher"
+          [nzOptions]="publishers"
+        ></nz-select>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label>Alter Ego</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="alter_ego" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label>First Appearance</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="first_appearance" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label>Characters</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="characters" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label>Alternate Image</nz-form-label>
+      <nz-form-control>
+        <input nz-input formControlName="alt_img" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-control>
+        <button
+          nz-button
+          nzSize="large"
+          nzType="primary"
+          [disabled]="!heroForm.valid"
+        >
+          Guardar
+        </button>
+      </nz-form-control>
+
+      <nz-form-control>
+        @if (currentHero.id) {
+          <button
+            (click)="showDeleteConfirm()"
+            nz-button
+            nzSize="large"
+            nzType="primary"
+            nzDanger
+            type="button"
+          >
+            Borrar
+          </button>
+        }
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+
+  <div class="hero__image">
+    <img
+      class="image-hero"
+      [src]="currentHero | heroImage"
+      [alt]="currentHero.superhero"
+    />
+  </div>
+</div>

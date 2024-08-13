@@ -1,0 +1,30 @@
+@if (hero) {
+  @if (hero) {
+    <a
+      (click)="goBack()"
+      (keydown.enter)="goBack()"
+      class="arrow-left"
+      tabindex="0"
+      role="button"
+    >
+      <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
+      Regresar
+    </a>
+  }
+
+  <nz-card nzHoverable style="width: 240px" [nzCover]="coverTemplate">
+    <nz-card-meta
+      nzTitle="{{ hero.superhero }}"
+      nzDescription="{{ hero.superhero }}"
+    ></nz-card-meta>
+  </nz-card>
+  <ng-template #coverTemplate>
+    <img alt="example" [src]="hero | heroImage" />
+  </ng-template>
+} @else {
+  <div #Loading>
+    <div class="simple">
+      <nz-spin nzSimple nzTip="Loading" nzSize="large"></nz-spin>
+    </div>
+  </div>
+}
